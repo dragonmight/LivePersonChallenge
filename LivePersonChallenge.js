@@ -1,3 +1,4 @@
+// Part 1
 // 1. Extract domain for idp
 fetch(
     "https://api.liveperson.net/api/account/66001775/service/idp/baseURI.json?version=1.0"
@@ -5,15 +6,16 @@ fetch(
     .then((response) => response.json())
     .then((data) => {
       // console.log(data);
-      // within the data object you can have below info
+      /**
+       * 
+      we need to extract the baseURI component from the data object returned
+      in JSON format below which we will then use to obtain the JWT
+       */
       let baseURI = data.baseURI;
       return baseURI;
-  
-      // you better not use these info outside this block. because here is an async function
-      //create a function outside and use it here
-      //pass these info as parameters
     })
     .then((uri) => {
+      // 2. Obtaining the JWT using the idp domain baseURI
       fetch("https://" + uri + "/api/account/66001775/signup", {
         method: "POST"
       })
@@ -22,11 +24,12 @@ fetch(
           // console.log(data.jwt);
           return data.jwt;
           /**
+           * The JWT obtained looks similar to below
            * eyJraWQiOiIwMDAwMSIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhYzg0ZTFjZi1hOTI3LTRmNDMtOWI0Ny1hODk4YjQ3MzVmNWEiLCJhdWQiOiJhY2M6NjYwMDE3NzUiLCJpc3MiOiJodHRwczpcL1wvaWRwLmxpdmVwZXJzb24ubmV0IiwiZXhwIjoyMDUzOTEwMzE4LCJpYXQiOjE2NDM2NzAyNzgsImp0aSI6ImY3OGViMDE3LTFkZmItNDM3ZS1iNzExLTAwYWNiODFmZmM0NyJ9.SlJC3WKOfknmIYuZUfTovSEbn1jKU9OAeglT6GCnozCZsnyaB4mCYpIlsMh0uDRZAl4pHcGjpO4llJkPFQ-zGT8CdQuAujLY7uQUpn5F1XYtIIGRcMy_uWnPcm7YwgfilP6ZVCayPgekZUiqS_sj-T1u5Rbo4Ud4vBFdOkuiZQ2_pjo2l_0fXynJE8Iax-IJrssNYL3tQMvBmb-3-zv4s8sSA4XbBFHftaOHNvSN69guY9nHvbldBzajASYfl06NzxuMXgua2mw4AJQWvKIXZVaTptcz3PHNtpFBUgFYLr21qHGrNaost97V3M55rQkdMDy3S_gyNYCSepQ0Wu4LMw
            */
         })
         .then((jwt) => {
-          // 2. Extract domain for asyncMessagingEnt
+          // 1. Extract domain for asyncMessagingEnt and use it to open web socket connection
           fetch(
             "https://api.liveperson.net/api/account/66001775/service/asyncMessagingEnt/baseURI.json?version=1.0"
           )
@@ -62,7 +65,7 @@ fetch(
               };
   
               socket.onmessage = function (event) {
-                console.log(event.data);
+                // console.log(event.data);
                 let temp1 = JSON.parse(event.data).body.conversationId;
                 // console.log(temp1);
   
