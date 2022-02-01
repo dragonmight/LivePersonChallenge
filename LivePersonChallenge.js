@@ -1,5 +1,5 @@
+// 1. Extract domain for idp
 fetch(
-    //set headers.jwt = getJwt()
     "https://api.liveperson.net/api/account/66001775/service/idp/baseURI.json?version=1.0"
   )
     .then((response) => response.json())
@@ -26,6 +26,7 @@ fetch(
            */
         })
         .then((jwt) => {
+          // 2. Extract domain for asyncMessagingEnt
           fetch(
             "https://api.liveperson.net/api/account/66001775/service/asyncMessagingEnt/baseURI.json?version=1.0"
           )
@@ -64,14 +65,14 @@ fetch(
                 let temp1 = JSON.parse(event.data).body.conversationId;
                 // console.log(temp1);
   
-                if (temp1 !== undefined) {
+                if (temp1) {
                   // console.log('HELLO')
                   var msg3 = {
                     kind: "req",
                     id: "2",
                     type: "ms.PublishEvent",
                     body: {
-                      dialogId: "temp1",
+                      dialogId: temp1, //the id here should be the id from last response
                       event: {
                         type: "ContentEvent",
                         contentType: "text/plain",
