@@ -2,7 +2,7 @@
 let accountNumber = 66001775;
 let strAccountNumber = accountNumber.toString();
 // console.log(strAccountNumber);
-// sendMessage(strAccountNumber);
+sendMessage(strAccountNumber);
 
 function sendMessage(strAccountNumber, message = "My first message") {
   // Part 1
