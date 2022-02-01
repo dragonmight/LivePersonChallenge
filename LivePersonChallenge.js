@@ -60,6 +60,7 @@ fetch(
                   }
                 ]
               };
+  
               socket.onmessage = function (event) {
                 console.log(event.data);
                 let temp1 = JSON.parse(event.data).body.conversationId;
@@ -82,6 +83,22 @@ fetch(
                   };
   
                   socket.send(JSON.stringify(msg3));
+  
+                  var msg_close = {
+                    kind: "req",
+                    id: "3",
+                    type: "cm.UpdateConversationField",
+                    body: {
+                      conversationId: temp1,
+                      conversationField: [
+                        {
+                          field: "ConversationStateField",
+                          conversationState: "CLOSE"
+                        }
+                      ]
+                    }
+                  };
+                  socket.send(JSON.stringify(msg_close));
                 }
               };
   
