@@ -71,7 +71,7 @@ fetch(
                     id: "2",
                     type: "ms.PublishEvent",
                     body: {
-                      dialogId: "_YOUR_CONVERSATION_ID_",
+                      dialogId: "temp1",
                       event: {
                         type: "ContentEvent",
                         contentType: "text/plain",
