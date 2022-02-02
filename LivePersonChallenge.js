@@ -1,10 +1,21 @@
 // Enter account number below - makes code reusable and easy to read
 let accountNumber = 66001775;
 let strAccountNumber = accountNumber.toString();
-// console.log(strAccountNumber);
-sendMessage(strAccountNumber);
 
-function sendMessage(strAccountNumber, message = "My first message") {
+document.getElementById("btnsave").addEventListener("click", returnText, false);
+
+function returnText() {
+  let input = document.getElementById("userInput").value;
+  console.log(input);
+  sendMessage(strAccountNumber, input);
+}
+
+// sendMessage(strAccountNumber);
+
+function sendMessage(
+  strAccountNumber = accountNumber.toString(),
+  message = "My first message"
+) {
   // Part 1
   // Step 1. Extract domain for idp
   fetch(
@@ -113,6 +124,7 @@ function sendMessage(strAccountNumber, message = "My first message") {
                   };
                   socket.send(JSON.stringify(msg_close));
                 }
+                // console.log(message + " successfully sent");
               };
 
               socket.onopen = function (event) {
