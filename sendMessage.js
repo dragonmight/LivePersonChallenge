@@ -1,8 +1,9 @@
 // This file exists to test in isolation, the sendMessage() function using the unit test framework defined in sendMessage.test.js
-// fetch had to be defined as below for the test to go through (source: StackOverflow)
 
+// fetch had to be defined as below for the test to go through (source: StackOverflow)
 fetch = jest.fn(() => Promise.resolve());
 
+// the conversationId variable will be used later to store the return value of the function for testing purposes, as an example
 let conversationId = "";
 
 function sendMessage(
@@ -147,8 +148,9 @@ function sendMessage(
       .catch(function (error) {
         console.log(error);
       });
+      // this return value is useful for testing purposes as an example
     return conversationId;
   }
 
-  // The line below is according to the syntax for running tests according to jest 
+  // The line below is according to the syntax for running tests according to jest - the unit testing tool
   module.exports = sendMessage;
