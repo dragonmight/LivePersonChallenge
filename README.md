@@ -5,7 +5,9 @@ Best/preferred way to run this quickly -
 1. Open Code Sandbox at https://codesandbox.io/
 2. Create a new JavaScript instance
 3. Copy+paste the code from the file LivePersonChallenge.js on GitHub into the index.js file created in this instance
-4. Watch the output on the console to the right
-5. Alternatively, we can use a local server on our computer to run the JavaScript file too or an extension on Visual Studio Code like Code Runner
-6. If any steps don't work or make sense, please reach out to dylanbferns@gmail.com
+4. Copy+paste the code from the file index.html on GitHub into index.html file created in this instance
+5. Ensure the files index.js and index.html in this Sandbox instance link to the right files
+6. Enter any text and hit Submit.
+7. Watch the same text reach the Agent Workspace Console on the LivePerson Conversational Cloud instance
+8. If any steps don't work or make sense, please reach out to dylanbferns@gmail.com
 
