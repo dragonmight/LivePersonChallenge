@@ -23,7 +23,6 @@ function sendMessage(
   )
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
       /**
      * 
     Step 2. Extract the baseURI component from the data object returned
@@ -39,7 +38,6 @@ function sendMessage(
       })
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data.jwt);
           return data.jwt;
           /**
            * The JWT obtained looks similar to below
@@ -53,12 +51,10 @@ function sendMessage(
           )
             .then((response) => response.json())
             .then((data) => {
-              // console.log(data.baseURI);
               return data.baseURI;
             })
             .then((asyncMessagingEntURI) => {
               // Step 3. Create a new web socket using the domain found under asyncMessagingEnt
-              // console.log(asyncMessagingEntURI);
               var socket = new WebSocket(
                 `wss://${asyncMessagingEntURI}/ws_api/account/${strAccountNumber}/messaging/consumer?v=3`
               );
@@ -86,7 +82,6 @@ function sendMessage(
               socket.onmessage = function (event) {
                 // console.log(JSON.parse(event.data).body);
                 let temp1 = JSON.parse(event.data).body.conversationId;
-                // console.log(temp1);
 
                 // Step 6. Use conversationId to publish content to conversation
                 // Step 7. You can verify that the published message appears on the Agent Console
@@ -125,7 +120,6 @@ function sendMessage(
                   };
                   socket.send(JSON.stringify(msg_close));
                 }
-                // console.log(message + " successfully sent");
               };
 
               socket.onopen = function (event) {

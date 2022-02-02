@@ -1,8 +1,9 @@
+// This file exists to test in isolation, the sendMessage() function using the unit test framework defined in sendMessage.test.js
+// fetch had to be defined as below for the test to go through (source: StackOverflow)
+
 fetch = jest.fn(() => Promise.resolve());
+
 let conversationId = "";
-let accountNumber = 66001775;
-let strAccountNumber = accountNumber.toString();
-sendMessage(strAccountNumber, "Testing message");
 
 function sendMessage(
     strAccountNumber = accountNumber.toString(),
@@ -149,4 +150,5 @@ function sendMessage(
     return conversationId;
   }
 
+  // The line below is according to the syntax for running tests according to jest 
   module.exports = sendMessage;
