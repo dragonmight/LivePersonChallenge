@@ -12,8 +12,6 @@ function returnText() {
   sendMessage(strAccountNumber, input);
 }
 
-// sendMessage(strAccountNumber);
-
 function sendMessage(
   strAccountNumber = accountNumber.toString(),
   message = "My first message"

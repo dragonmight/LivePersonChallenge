@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "axios": "^0.25.0",
-    "jquery": "^3.6.0"
+    "jest-fetch-mock": "^3.0.3",
+    "jquery": "^3.6.0",
+    "node-fetch": "^3.2.0"
   },
   "name": "livepersonchallenge",
   "description": "Answer to the LivePerson challenge",
@@ -23,5 +25,8 @@
   "homepage": "https://github.com/dragonmight/LivePersonChallenge#readme",
   "devDependencies": {
     "jest": "^27.4.7"
+  },
+  "directories": {
+    "test": "test"
   }
 }
