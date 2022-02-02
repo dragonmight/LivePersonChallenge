@@ -1,12 +1,14 @@
 // Enter account number below - makes code reusable and easy to read
 let accountNumber = 66001775;
 let strAccountNumber = accountNumber.toString();
+let conversationId = "";
 
+// Optional. The line below allows users to open, send custom text and close the connection
 document.getElementById("btnsave").addEventListener("click", returnText, false);
 
 function returnText() {
   let input = document.getElementById("userInput").value;
-  console.log(input);
+  // console.log(input);
   sendMessage(strAccountNumber, input);
 }
 
@@ -84,13 +86,14 @@ function sendMessage(
               // Creating a socket listener to receive response from the server
               // Step 5. From this response, we can get the conversationId
               socket.onmessage = function (event) {
-                // console.log(event.data);
+                // console.log(JSON.parse(event.data).body);
                 let temp1 = JSON.parse(event.data).body.conversationId;
                 // console.log(temp1);
 
                 // Step 6. Use conversationId to publish content to conversation
                 // Step 7. You can verify that the published message appears on the Agent Console
                 if (temp1) {
+                  conversationId = temp1;
                   var msg3 = {
                     kind: "req",
                     id: "2",
@@ -153,4 +156,5 @@ function sendMessage(
     .catch(function (error) {
       console.log(error);
     });
+  return conversationId;
 }
