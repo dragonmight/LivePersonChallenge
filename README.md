@@ -3,7 +3,7 @@ Answer to the LivePerson challenge
 
 Best/preferred way to run this quickly -
 1. Open Code Sandbox at https://codesandbox.io/
-2. Create a new JavaScript instance
+2. Create a new Vanilla JavaScript instance
 3. Copy+paste the code from the file LivePersonChallenge.js on GitHub into the index.js file created in this instance
 4. Copy+paste the code from the file index.html on GitHub into index.html file created in this instance
 5. Ensure the files index.js and index.html in this Sandbox instance link to the right files
